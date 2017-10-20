@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>列表AG</title>
+	<link rel="stylesheet" href="style/css/listTT.css">
+	<script src="style/js/angular.min.js"></script>
+	<script src="style/js/listTT.js"></script>
+	<style>
+		.listBoxGB{
+			width:800px;
+			background: #eee;
+			border:1px solid #ebebeb;
+			padding: 10px;
+			margin: 0 auto;
+		}
+		.thID{
+			/*color: red !important;*/
+		}
+	</style>
+</head>
+<body ng-app="myApp" ng-controller="listControl">
+	<div class="listBoxGB"
+		list-model="listdata"
+		set-data = "setData"
+		page-count="pageCount"
+		current-page="currentPage"
+		on-page-change="onPageChange()">
+	</div>
+</body>
+<script>
+	var app = angular.module('myApp',['listTT']);
+	app.controller('listControl', ['$scope', function($scope){
+		$scope.listdata = [
+			{name:'小红',workNum:'110',userName:'ls1',role:'普师',state:'待审核'},
+			{name:'小红',workNum:'110',userName:'ls1',role:'普师',state:'待审核'},
+			{name:'小红',workNum:'110',userName:'ls1',role:'普师',state:'待审核'},
+			{name:'小黑',workNum:'110',userName:'ls1',role:'普师',state:'已审核'}
+		];
+
+		// 参数配置
+		$scope.setData = {
+			searchAreaHid: true,  /*搜索区域是否隐藏，默认不隐藏，不配置不隐藏*/
+			searchPrompt: '请输入性别搜索',    /*搜索框中提示信息*/
+			searchBtn 	: function(txt){alert('搜索内容是：' + txt)},  /*函数内写向后台发送请求的方法，并且把$scope.listdata替换  txt参数即是搜索内容*/
+
+			toolsAreaHid: false,
+			tools 		: [{link:'https://www.baidu.com',text:'添加',icon:'style/images/icon-pladd.png'},  /*默认跳转页面*/
+							{text:'批量添加',icon:'style/images/icon-add.png',action:function(){alert('这是一个动作')}},
+							{text:'excel导入',icon:'style/images/icon-pladd.png'}],
+
+			cateAreaHid: false,
+			category 	: ['所有','已审','待审','拒绝'],
+			catClick 	: function(txt){console.log(txt + '：到后台查询数据，替换$scope.listdata')},
+
+			th 			: [{cn:'thID',txt:'ID'},{cn:'thUserName',txt:'用户名'},
+							{cn:'thWorkNum',txt:'工号'},{cn:'thName',txt:'姓名'},
+							{cn:'thRol',txt:'角色类型'},{cn:'thState',txt:'状态'},
+							{cn:'thOperations',txt:'操作'},{txt:'附加'}],
+			td 			: [{cn:'tdID',txt:'index'},{cn:'tdname',txt:'name'},
+							{cn:'tdworkNum',txt:'workNum'},{cn:'tduserName',txt:'userName'},
+							{cn:'tdrole',txt:'role'},{cn:'tdstate',txt:'state'},{},{}],
+			operation 	:{column:6,
+							btns:[{text:'查看',link:'https://www.baidu.com'},{text:'修改',action:function(data){console.log(data)}}]},
+
+			firstText 	: '首页',
+	        nextText 	: '下一页',
+	        prevText 	: '上一页',
+	        lastText 	: '尾页',
+	        showGoto 	: true,
+	        gotoText 	: 'GO',
+	        visiblePageCount : 5,
+	        pagerLocate : 'left'
+
+		};
+
+		// set pagecount in $scope   设置总页数
+		$scope.pageCount = 100;
+
+		$scope.onPageChange = function () {
+			// ajax request to load data
+			$scope.listdata = [
+				{name:'小红',workNum:'110',userName:'ls1',role:'普师',state:'待审核'},
+				{name:'小橙',workNum:'110',userName:'ls1',role:'普师',state:'审核拒绝'},
+				{name:'小黄',workNum:'110',userName:'ls1',role:'普师',state:'已审核'},
+				{name:'小绿',workNum:'110',userName:'ls1',role:'普师',state:'已审核'},
+				{name:'小青',workNum:'110',userName:'ls1',role:'普师',state:'已审核'},
+				{name:'小兰',workNum:'110',userName:'ls1',role:'普师',state:'已审核'},
+				{name:'小紫',workNum:'110',userName:'ls1',role:'普师',state:'已审核'}
+			];
+
+			// 当前页码
+			console.log($scope.currentPage);
+		};
+	}])
+</script>
+</html>

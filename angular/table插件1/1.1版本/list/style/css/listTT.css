@@ -1,0 +1,204 @@
+.listBoxGB ul,
+.listBoxGB li{margin: 0;padding: 0;list-style: none;}
+    	.pageMenu li::selection{background:transparent;}
+    	.clearfix{zoom:1;}
+		.clearfix:after{content:"";display: block;clear: both;}
+		.pageDiv{width: 98.75%;background: #fff;padding-left: 1.25%;margin-bottom: 10px;}
+		.pageDiv li{margin-bottom: 10px;border:1px solid #dbdbdb;width: 21.5%;margin-right: 1.25%;float:left;margin-top: 10px;padding: 1%;text-align: center;}
+		.hide{display: none;}
+		.notContent{padding: 15px 0;text-align: center;}
+
+		.page{text-align: center;width: 100%;margin: 0 auto;}
+		.pageMenu{display: inline-block;width: 90%;}
+		
+		.pageMenu li{border: solid thin #ddd;margin: 3px;float: left;padding: 5px 10px;cursor: pointer;background: #fff;}
+		.pageMenu li.firstPage{}
+		.pageMenu li.prevPage{}
+		.pageMenu li.pageNum{}
+		.pageMenu li.nextPage{}
+		.pageMenu li.lastPage{}
+		.pageMenu li.disabled{ background-color: #DDDDDD;   cursor: not-allowed;}
+		.pageMenu li.active{ border: solid thin #0099FF;background-color: #0099FF;color: white;}
+		.pageMenu li.last{background: transparent;border:0;position: relative;top: -4px;}
+		.page .keuInput{padding: 0 5px;width: 44px;border: solid thin #ddd;height: 29px;outline: none;text-align: center;font-size: 16px;}
+		.page .btnSure{padding: 4px 8px;border: solid thin #ddd;outline: none;text-align: center;font-size: 16px;background: #fff;position: relative;top: 2px;}
+		.page .btnSure:hover{cursor: pointer;}
+
+.page .last{
+	cursor:auto; 
+}
+.page .last button{
+	cursor: pointer;
+}
+
+
+
+/*css*/
+.listBoxGB{
+	font-size: 0;
+}
+.listBoxGB .toolBar .search{
+	float: left;
+	width: 280px;
+}
+.listBoxGB .toolBar .tools{
+	float: right;
+	width: 500px;
+	height: 26px;
+	font-size: 16px;
+}
+.listBoxGB .toolBar .search input{
+	width: 200px;
+	height: 16px;
+	font-size: 14px;
+	line-height: 16px;
+	padding: 4px 5px;
+	border: 1px solid #ddd;
+	outline: none;
+	color: #333;
+	border-radius: 2px;
+	vertical-align: top;
+}
+.listBoxGB .toolBar .search span{
+	display: inline-block;
+	width: 50px;
+	height: 26px;
+	cursor: pointer;
+	margin-left: 10px;
+	background:url(../images/searchBtn.png) no-repeat;
+}
+.listBoxGB .classifyBar .circle{
+	display: inline-block;
+	height: 14px;
+	width: 14px;
+	background: url(../images/check-icon.png) no-repeat;
+	background-position: 0 0;
+	overflow: hidden;
+}
+.listBoxGB .classifyBar{
+	margin-top: 20px;
+}
+.listBoxGB .classifyBar .text{
+	font-size: 14px;
+	line-height: 14px;
+	color: #333;
+	margin-left: 4px;
+	vertical-align: top;
+}
+.listBoxGB .classifyBar li:hover{
+	cursor: pointer;
+}
+.listBoxGB .classifyBar li{
+	float: left;
+	margin-right: 20px;
+}
+.listBoxGB .classifyBar .active .circle{
+	background-position: 0 -26px;
+}
+.listBoxGB table{
+	width: 100%;
+}
+.listBoxGB th,
+.listBoxGB td{
+	font-size: 12px;
+	color: #333;
+	text-align: center;
+}
+.listBoxGB tr{
+	height: 30px;
+}
+.listBoxGB .pageDiv span{
+	margin: 0 5px;
+	/*color: #299fe7;*/
+	cursor: pointer;
+}
+.listBoxGB .toolBar .tools>div{
+	float: right;
+	cursor: pointer;
+	margin-top: 2px;
+	margin-left: 10px;
+}
+.listBoxGB .toolBar .tools .icon{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-size: 100% 100%;
+}
+.listBoxGB .toolBar .tools .text{
+	display: inline-block;
+	height: 20px;
+	font-size: 14px;
+	color: #333;
+	line-height: 20px;
+	vertical-align: top;
+	margin-left: 2px;
+}
+.listBoxGB .toolBar .tools .toolImgHide{
+	display: none;
+}
+.listBoxGB .dataPrompt{
+	font-size: 26px;
+	color: #666;
+	line-height: 36px;
+	height: 36px;
+	text-align: center;
+	letter-spacing: 0.4em;
+	display: none;
+}
+
+/*翻页*/
+.listBoxGB .pager{
+	margin-top: 20px;
+	text-align: center;
+}
+.listBoxGB .pagerLeft{
+	text-align: left;
+}
+.listBoxGB .pagerCenter{
+	text-align: center;
+}
+.listBoxGB .pagerRight{
+	text-align: right;
+}
+.ng-pagination {
+	display: inline-block;
+	font-family: 'Microsoft YaHei';
+	font-size: 12px;
+	color: #337ab7;
+}
+
+.ng-pagination>ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.ng-pagination>ul>li {
+  padding: 6px 12px;
+  margin-right: 5px;
+  border: 1px solid #ddd;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 2px;
+  background: #fff;
+  -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+.ng-pagination>ul>li:hover,
+.ng-pagination>ul>li.active {
+  background-color: #299fe7;
+  color: #fff;
+}
+
+.ng-pagination input {
+  margin-left: 2px;
+  width: 30px;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+  vertical-align: 1px;
+  text-align: center;
+  padding: 6px 3px;
+}
