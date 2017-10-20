@@ -1,0 +1,51 @@
+<!-- 搜索 -->
+<div class="toolBar clearfix">
+	<div class="search" ng-hide="setData.searchAreaHid">
+		<input type="text" ng-model="setData.searchPrompt" ng-focus="iptClick()">
+		<span ng-click="searchTT()"></span>
+	</div>
+	<div class="tools clearfix" ng-hide="setData.toolsAreaHid">
+		<div class="myTool" ng-repeat="x in setData.tools" ng-click="toolClick($index)">
+			<span class="icon" ng-show="x.icon">
+				<img alt="" ng-src="{{x.icon}}">
+			</span>
+			<span class="text" ng-bind="x.text"></span>
+		</div>
+	</div>
+</div>
+
+<!-- 分类 -->
+<ul class="classifyBar clearfix" ng-hide="setData.cateAreaHid">
+	<li ng-repeat="x in setData.category" ng-class="{active:catChecked==$index||(!catChecked && $index == 0)}" ng-click="catCheck($index);catAction(x)">
+		<span class="circle"></span>
+		<span class="text" ng-bind="x"></span>
+	</li>
+</ul>
+
+<!-- 内容 -->
+<table>
+	<thead>
+		<th ng-repeat="x in setData.th" ng-bind="x.txt" ng-class="x.cn"></th>
+	</thead>
+	<tbody class="pageDiv">
+		<tr ng-repeat="x in listModel" ng-init="outIndex = $index">
+			<td ng-repeat="y in setData.td" ng-class="y.cn" ng-init="outI = $index">
+				{{dd(x,y.txt,outIndex)}} 
+				<span ng-repeat="z in setData.operation.btns" ng-bind="z.text" ng-show="setData.operation.column == outI" ng-click="operate(z,x)"></span>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<!-- 分页 -->
+<div class="pager" ng-class="{pagerLeft:setData.pagerLocate == 'left',pagerCenter:setData.pagerLocate == 'center',pagerRight:setData.pagerLocate == 'right'}">
+	<div class="ng-pagination">
+		<ul ng-if="pageCount>1 || showIfOnePage">
+			<li ng-click="pageChange(1)" ng-if="showFirstLastText">{{firstText}}</li>
+			<li ng-click="pageChange(currentPage-1>0?currentPage-1:1)">{{prevText}}</li>
+			<li ng-repeat="pagenum in pagenums track by pagenum" ng-click="pageChange(pagenum)" ng-class="{active:currentPage===pagenum}">{{pagenum}}</li>
+			<li ng-click="pageChange(currentPage+1<=pageCount?currentPage+1:pageCount)">{{nextText}}</li>
+			<li ng-click="pageChange(pageCount)" ng-if="showFirstLastText">{{lastText}}</li>
+		</ul>
+		<lable ng-if="showGoto">{{gotoText}}<input type="text" ng-keyup="keyupHanlder($event)"></label>
+	</div>
+</div>
